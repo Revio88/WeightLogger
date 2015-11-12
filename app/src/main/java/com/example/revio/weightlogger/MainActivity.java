@@ -1,5 +1,6 @@
 package com.example.revio.weightlogger;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
@@ -39,18 +42,15 @@ public class MainActivity extends AppCompatActivity {
         chart.setScaleEnabled(true);
         chart.setBackgroundColor(Color.LTGRAY);
 
-        LineData a = setData(8, 30);
+        LineData a = setData(9, 30);
 
         chart.setData(a);
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });  */
+    }
+
+    public void insertData(View view) {
+        Intent intent = new Intent(this, InsertDataActivity.class);
+        startActivity(intent);
     }
 
     private LineData setData(int count, float range) {
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         xVals.add(5, "15/11/14");
         xVals.add(6, "19/11/14");
         xVals.add(7, "22/11/14");
-        // xVals.add(8, "23/11/14");
+        xVals.add(8, "23/11/14");
 
 
         for (int i = 0; i < count; i++) {
